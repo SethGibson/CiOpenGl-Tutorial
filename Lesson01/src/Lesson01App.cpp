@@ -1,13 +1,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/app/RendererGl.h"
-#include "cinder/GeomIo.h"
-#include "cinder/gl/Shader.h"
 #include "cinder/gl/Batch.h"
-#include "cinder/gl/Vbo.h"
-#include "cinder/gl/VboMesh.h"
-#include "cinder/gl/Texture.h"
-#include "cinder/ImageIo.h"
-#include "cinder/Utilities.h"
+#include "cinder/gl/GlslProg.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -74,8 +68,5 @@ void Lesson01App::draw()
 	gl::enableDepthRead();
 	mBatch->draw();
 }
-
-
-
 
 CINDER_APP_NATIVE( Lesson01App, RendererGl )
