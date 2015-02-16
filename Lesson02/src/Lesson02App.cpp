@@ -1,5 +1,18 @@
+/* Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+
+Lesson 02: Camera
+Original Tutorial:
+http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+
+We're deviating a bit from the original tutorial here as we won't implement all
+the matrix math ourselves, instead we'll learn how to work with Cinder's CameraPersp.
+I recommend reading the original tutorial as it'll give you a good understanding of what
+CameraPersp is probably doing under the hood.
+*/
+
 #include "cinder/app/AppNative.h"
 #include "cinder/app/RendererGl.h"
+#include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
 
@@ -10,49 +23,51 @@ using namespace std;
 class Lesson02App : public AppNative {
 public:
 	void	setup() override;
-	void	resize() override;
 	void	update() override;
 	void	draw() override;
 
-	void setupVboMesh();
-	void drawVboMesh();
-
-	CameraPersp			mCam;
-	gl::BatchRef		mBatch;
 	gl::GlslProgRef		mGlsl;
-	mat4				mCubeRotation;
+	gl::VboRef			mShapeVbo;
+	geom::BufferLayout	mShapeLayout;
+	gl::VboMeshRef		mShapeMesh;
+	gl::BatchRef		mBatch;
 
-	//setupVboMesh
-	gl::VboRef mShapeVbo;
-	gl::VboMeshRef mShapeMesh;
-	geom::BufferLayout mShapeLayout;
-
+	CameraPersp			mCamera;
 };
 
 void Lesson02App::setup()
 {
-	getWindow()->setSize(500, 500);
-	mGlsl = gl::GlslProg::create(loadAsset("simple_vert.glsl"), loadAsset("simple_frag.glsl"));
+	getWindow()->setSize(1024, 768);
+	try
+	{
+		mGlsl = gl::GlslProg::create(loadAsset("simple_vert.glsl"), loadAsset("simple_frag.glsl"));
+	}
+	catch (const gl::GlslProgExc &e)
+	{
+		console() << "Error loading shaders:" << endl;
+		console() << e.what() << endl;
+		quit();
+	}
 
-	float cWidth = (float)getWindowWidth();
-	float cHeight = (float)getWindowHeight();
-	vector<vec3> cVertices = { vec3(0.0, cWidth, 0.0),
-		vec3(cWidth, cHeight, 0.0),
-		vec3(cWidth / 2, 0.0, 0.0)
+	//	Let's set up our camera now.  All sorts of matrix magic happens here, and you'll notice that
+	//	the commands and parameters map 1-to-1.
+	//	So, perspective matrix first.  Note how CameraPersp::setPerspective() maps to
+	//	glm::perspective():
+	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
 
-	};
+	// Now the view matrix.  Once again, note the mapping:
+	mCamera.lookAt(vec3(4, 3, 3), vec3(0), vec3(0, 1, 0));
+
+	//	Since we're in 3d space now, we'll change our vertex coords to properly reflect
+	//	our new camera based viewport.  Everything else pretty much stays the same.
+	vector<vec3> cVertices = { vec3(-1.0, -1.0, 0.0),
+		vec3(1.0, -1.0, 0.0),
+		vec3(0.0, 1.0, 0.0) };
 
 	mShapeVbo = gl::Vbo::create(GL_ARRAY_BUFFER, cVertices, GL_STATIC_DRAW);
-	mShapeLayout.append(geom::Attrib::POSITION, 3, sizeof(vec3), 0);
+	mShapeLayout.append(geom::Attrib::POSITION, geom::DataType::FLOAT, 3, sizeof(vec3), 0);
 	mShapeMesh = gl::VboMesh::create(3, GL_TRIANGLES, { { mShapeLayout, mShapeVbo } });
 	mBatch = gl::Batch::create(mShapeMesh, mGlsl);
-}
-
-
-void Lesson02App::resize()
-{
-	mCam.setPerspective(60, getWindowAspectRatio(), 1, 1000);
-	gl::setMatrices(mCam);
 }
 
 void Lesson02App::update()
@@ -61,10 +76,11 @@ void Lesson02App::update()
 
 void Lesson02App::draw()
 {
-	gl::clear();
-	gl::setMatricesWindowPersp(getWindowSize());
-	gl::enableDepthWrite();
-	gl::enableDepthRead();
+	gl::clear(Color(0, 0, 0.15f));
+
+	//	Now we set our modelviewprojection matrix, based on the camera we set up earlier.
+	//	Everything will be drawin relative to the camera until we specify new matrices.
+	gl::setMatrices(mCamera);
 	mBatch->draw();
 }
 CINDER_APP_NATIVE( Lesson02App, RendererGl )
