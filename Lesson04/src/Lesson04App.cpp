@@ -58,8 +58,8 @@ void Lesson04App::setup()
 
 	vector<vec3> cVertices =
 	{
-		vec3(1.0f, 1.0f, 0.0f), vec3(-1.0f, 1.0f, 0.0f), vec3(-1.0f, -1.0f, 0.0f),
-		vec3(1.0f, 1.0f, 0.0f), vec3(-1.0f, -1.0f, 0.0f), vec3(1.0f, -1.0f, 0.0f),
+		vec3(1.0f, 1.0f, 0.0f), vec3(-1.0f, 1.0f, 0.0f),	vec3(-1.0f, -1.0f, 0.0f),
+		vec3(1.0f, 1.0f, 0.0f), vec3(-1.0f, -1.0f, 0.0f),	vec3(1.0f, -1.0f, 0.0f),
 	};
 
 	vector<vec4> cColors =
@@ -71,7 +71,7 @@ void Lesson04App::setup()
 	vector<vec2> cUVs =
 	{
 		vec2(1.0,1.0), vec2(0.0,1.0), vec2(0.0,0.0),
-		vec2(1.0, 1.0), vec2(0.0,0.0), vec2(1.0,0.0)
+		vec2(1.0,1.0), vec2(0.0,0.0), vec2(1.0,0.0)
 	};
 
 	mPositionData = gl::Vbo::create(GL_ARRAY_BUFFER, cVertices, GL_STATIC_DRAW);

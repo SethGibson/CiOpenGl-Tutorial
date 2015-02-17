@@ -66,12 +66,12 @@ void Lesson04bApp::setup()
 
 	vector<CioVertex> cVertList = 
 	{
-		CioVertex(vec3(1.0f, 1.0f, 0.0f), vec4(0.583f, 0.771f, 0.014f, 1.0f), vec2(1.0, 1.0)),
-		CioVertex(vec3(-1.0f, 1.0f, 0.0f), vec4(0.609f, 0.115f, 0.436f, 1.0f), vec2(0.0, 1.0)),
+		CioVertex(vec3(1.0f, 1.0f, 0.0f),	vec4(0.583f, 0.771f, 0.014f, 1.0f), vec2(1.0, 1.0)),
+		CioVertex(vec3(-1.0f, 1.0f, 0.0f),	vec4(0.609f, 0.115f, 0.436f, 1.0f), vec2(0.0, 1.0)),
 		CioVertex(vec3(-1.0f, -1.0f, 0.0f), vec4(0.327f, 0.483f, 0.844f, 1.0f), vec2(0.0, 0.0)),
-		CioVertex(vec3(1.0f, 1.0f, 0.0f), vec4(0.822f, 0.569f, 0.201f, 1.0f), vec2(1.0, 1.0)),
+		CioVertex(vec3(1.0f, 1.0f, 0.0f),	vec4(0.822f, 0.569f, 0.201f, 1.0f), vec2(1.0, 1.0)),
 		CioVertex(vec3(-1.0f, -1.0f, 0.0f), vec4(0.435f, 0.602f, 0.223f, 1.0f), vec2(0.0, 0.0)),
-		CioVertex(vec3(1.0f, -1.0f, 0.0f), vec4(0.310f, 0.747f, 0.185f, 1.0f), vec2(1.0, 0.0))
+		CioVertex(vec3(1.0f, -1.0f, 0.0f),	vec4(0.310f, 0.747f, 0.185f, 1.0f), vec2(1.0, 0.0))
 	};
 
 	mVertexData = gl::Vbo::create(GL_ARRAY_BUFFER, cVertList, GL_STATIC_DRAW);
