@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lesson_Shadowmaps", "Lesson_Shadowmaps.vcxproj", "{60D1D5DB-84AF-4D4B-9F29-0E37413FC6F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60D1D5DB-84AF-4D4B-9F29-0E37413FC6F9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60D1D5DB-84AF-4D4B-9F29-0E37413FC6F9}.Debug|Win32.Build.0 = Debug|Win32
+		{60D1D5DB-84AF-4D4B-9F29-0E37413FC6F9}.Release|Win32.ActiveCfg = Release|Win32
+		{60D1D5DB-84AF-4D4B-9F29-0E37413FC6F9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
