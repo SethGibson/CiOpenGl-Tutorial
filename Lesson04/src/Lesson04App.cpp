@@ -1,10 +1,12 @@
 /* Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
 
-Lesson 03a: Texturing
+Lesson 04a: Texturing
 Original Tutorial:
 http://www.opengl-tutorial.org/beginners-tutorials/tutorial-5-a-textured-cube/
 
-Let's apply a texture to a primitive.  For simplicity's sake, we'll use a plane instead of a cube
+Let's apply a texture to a primitive.  For simplicity's sake, we'll use a plane instead of a cube, and
+we'll use multiple VBOs.  Next tutorial we'll look at using structs to pass multiple attribute datasets
+to the VBO.
 */
 
 #include "cinder/app/AppNative.h"
