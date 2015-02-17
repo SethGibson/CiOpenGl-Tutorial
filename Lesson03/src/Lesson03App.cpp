@@ -53,18 +53,18 @@ void Lesson03App::setup()
 	// Since we're creating a cube, that means many more verts!
 	vector<vec3> cVertices =
 	{
-		vec3(-1.0f, -1.0f, -1.0f),vec3(-1.0f, -1.0f, 1.0f),vec3(-1.0f, 1.0f, 1.0f),
-		vec3(-1.0f, -1.0f, -1.0f),vec3(-1.0f, 1.0f, 1.0f),vec3(-1.0f, 1.0f, -1.0f),
-		vec3(1.0f, 1.0f, 1.0f),vec3(1.0f, 1.0f, -1.0f),vec3(-1.0f, 1.0f, -1.0f),
-		vec3(1.0f, 1.0f, 1.0f),vec3(-1.0f, 1.0f, -1.0f),vec3(-1.0f, 1.0f, 1.0f),
-		vec3(1.0f, -1.0f, -1.0f),vec3(1.0f, -1.0f, 1.0f),vec3(1.0f, 1.0f, 1.0f),
-		vec3(1.0f, -1.0f, -1.0f),vec3(1.0f, 1.0f, 1.0f),vec3(1.0f, 1.0f, -1.0f),
-		vec3(1.0f, -1.0f, 1.0f),vec3(-1.0f, -1.0f, -1.0f),vec3(1.0f, -1.0f, -1.0f),
-		vec3(1.0f, -1.0f, 1.0f),vec3(-1.0f, -1.0f, 1.0f),vec3(-1.0f, -1.0f, -1.0f),
-		vec3(1.0f, 1.0f, -1.0f),vec3(-1.0f, -1.0f, -1.0f),vec3(-1.0f, 1.0f, -1.0f),
-		vec3(1.0f, 1.0f, -1.0f),vec3(1.0f, -1.0f, -1.0f),vec3(-1.0f, -1.0f, -1.0f),
-		vec3(-1.0f, 1.0f, 1.0f),vec3(-1.0f, -1.0f, 1.0f),vec3(1.0f, -1.0f, 1.0f),
-		vec3(1.0f, 1.0f, 1.0f),vec3(-1.0f, 1.0f, 1.0f),vec3(1.0f, -1.0f, 1.0f)
+		vec3(-1.0f, -1.0f, -1.0f),	vec3(-1.0f, -1.0f, 1.0f),	vec3(-1.0f, 1.0f, 1.0f),
+		vec3(-1.0f, -1.0f, -1.0f),	vec3(-1.0f, 1.0f, 1.0f),	vec3(-1.0f, 1.0f, -1.0f),
+		vec3(1.0f, 1.0f, 1.0f),		vec3(1.0f, 1.0f, -1.0f),	vec3(-1.0f, 1.0f, -1.0f),
+		vec3(1.0f, 1.0f, 1.0f),		vec3(-1.0f, 1.0f, -1.0f),	vec3(-1.0f, 1.0f, 1.0f),
+		vec3(1.0f, -1.0f, -1.0f),	vec3(1.0f, -1.0f, 1.0f),	vec3(1.0f, 1.0f, 1.0f),
+		vec3(1.0f, -1.0f, -1.0f),	vec3(1.0f, 1.0f, 1.0f),		vec3(1.0f, 1.0f, -1.0f),
+		vec3(1.0f, -1.0f, 1.0f),	vec3(-1.0f, -1.0f, -1.0f),	vec3(1.0f, -1.0f, -1.0f),
+		vec3(1.0f, -1.0f, 1.0f),	vec3(-1.0f, -1.0f, 1.0f),	vec3(-1.0f, -1.0f, -1.0f),
+		vec3(1.0f, 1.0f, -1.0f),	vec3(-1.0f, -1.0f, -1.0f),	vec3(-1.0f, 1.0f, -1.0f),
+		vec3(1.0f, 1.0f, -1.0f),	vec3(1.0f, -1.0f, -1.0f),	vec3(-1.0f, -1.0f, -1.0f),
+		vec3(-1.0f, 1.0f, 1.0f),	vec3(-1.0f, -1.0f, 1.0f),	vec3(1.0f, -1.0f, 1.0f),
+		vec3(1.0f, 1.0f, 1.0f),		vec3(-1.0f, 1.0f, 1.0f),	vec3(1.0f, -1.0f, 1.0f)
 	};
 
 	vector<vec4> cColors = 
@@ -91,7 +91,6 @@ void Lesson03App::setup()
 
 	mCubeMesh = gl::VboMesh::create(36, GL_TRIANGLES, { { mPositionLayout, mPositionData }, { mColorLayout, mColorData } });
 	mBatch = gl::Batch::create(mCubeMesh, mGlsl);
-
 }
 
 void Lesson03App::update()
