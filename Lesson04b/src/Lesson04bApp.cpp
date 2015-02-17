@@ -94,7 +94,8 @@ void Lesson04bApp::draw()
 
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
 	gl::setMatrices(mCamera);
-	mTexture->bind();
+	
+	gl::ScopedTextureBind cTexture(mTexture);
 	mBatch->draw();
 }
 

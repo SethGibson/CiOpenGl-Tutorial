@@ -109,7 +109,8 @@ void Lesson05App::draw()
 
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
 	gl::setMatrices(mMayaCam.getCamera());
-	mTexture->bind();
+	
+	gl::ScopedTextureBind cTexture(mTexture);
 	mBatch->draw();
 }
 
