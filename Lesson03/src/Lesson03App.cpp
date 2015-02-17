@@ -1,6 +1,6 @@
 /* Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
 
-Lesson 03a: Colored cube (manual method)
+Lesson 03: Colored cube
 Original Tutorial:
 http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
 
