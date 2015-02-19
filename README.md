@@ -17,11 +17,11 @@ Original content can be found at/taken from:<br/>
 * Lesson04: Basic Texturing
 * Lesson04b: Interleaved Vertex Attributes
 * Lesson05: Cinder Interactive Camera (Cinder::MayaCamUI)
-* LessonIndexVBO: Drawing VBOs with Indices
+* LessonIndexedVBO: Drawing VBOMesh with Indices
+* LessonIndexedVBODynamic: Drawing VBOMesh with Dynamic Attributes
 * LessonInstancing: Drawing Instanced Geometry with per-Instance Attributes
 
 ### Coming Soon (Subject to Change)
-* LessonIndexVBODynamic: Drawing VBOs with Dynamic Attributes
 * LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes
 * LessonLightingBasic1: Diffuse Lighting and Normals Generation
 * LessonLightingBasic2: Diffuse+Ambient
