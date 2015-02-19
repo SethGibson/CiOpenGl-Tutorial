@@ -40,8 +40,8 @@ public:
 
 void LessonIndexedVBODynamicApp::setup()
 {
-	mMaxX = 100;
-	mMaxY = 100;
+	mMaxX = 50;
+	mMaxY = 50;
 	try
 	{
 		mGlsl = gl::GlslProg::create(loadAsset("inst_simple_vert.glsl"), loadAsset("inst_simple_frag.glsl"));
@@ -60,6 +60,9 @@ void LessonIndexedVBODynamicApp::setup()
 	mCamera.lookAt(vec3(0, 0, 5), vec3(0), vec3(0, 1, 0));
 	mCamera.setCenterOfInterestPoint(vec3(0));
 	mMayaCam.setCurrentCam(mCamera);
+
+	getWindow()->setSize(640,360);
+	setFrameRate(30);
 }
 
 void LessonIndexedVBODynamicApp::populateBuffers(bool pInit)
@@ -72,14 +75,14 @@ void LessonIndexedVBODynamicApp::populateBuffers(bool pInit)
 	{
 		for (int vx = 0; vx < mMaxX; ++vx)
 		{
-			float cX = lmap<float>(vx, 0, mMaxX - 1, 1.0f, -1.0f);
-			float cY = lmap<float>(vy, 0, mMaxY - 1, 1.0f, -1.0f);
-			float cZ = math<float>::sin((vx + getElapsedSeconds()))*0.5f;
+			float cX = lmap<float>(vx, 0, mMaxX - 1, 1.6f, -1.6f);
+			float cY = lmap<float>(vy, 0, mMaxY - 1, 0.9f, -0.9f);
+			float cZ = math<float>::sin(((vy+getElapsedSeconds()*0.1f)+(vx+getElapsedSeconds()*0.3f)))*0.1f;
 			mVerts.push_back(vec3(cX, cY, cZ));
 
 			float cR = lmap<float>(vx, 0, mMaxX - 1, 0.0f, 1.0f);
 			float cG = lmap<float>(vy, 0, mMaxY - 1, 0.0f, 1.0f);
-			float cB = math<float>::sin(vy);
+			float cB = math<float>::cos(getElapsedSeconds());
 			cB = (cB + 1.0f)*0.5f;
 			mColors.push_back(vec4(cR, cG, cB, 1.0));
 		}
@@ -152,8 +155,8 @@ void LessonIndexedVBODynamicApp::mouseDrag(MouseEvent event)
 
 void LessonIndexedVBODynamicApp::update()
 {
-	mMaxX = randInt(50, 200);
-	mMaxY = randInt(50, 200);
+	mMaxX = randInt(25, 100);
+	mMaxY = randInt(25, 100);
 	int r = mMaxX % 2;
 	if (r > 0)mMaxX += r;
 	r = mMaxY % 2;
