@@ -128,14 +128,12 @@ void LessonIndexedVBODynamicApp::populateBuffers(bool pInit)
 		mColorLayout.append(geom::Attrib::COLOR, 4, 0, 0);
 
 		mIndexData = gl::Vbo::create(GL_ELEMENT_ARRAY_BUFFER, mIndices.size()*sizeof(uint32_t), mIndices.data(), GL_DYNAMIC_DRAW);
-
 	}
 	else
 	{
-		mPositionData = gl::Vbo::create(GL_ARRAY_BUFFER, mVerts, GL_DYNAMIC_DRAW);
-		mColorData = gl::Vbo::create(GL_ARRAY_BUFFER, mColors, GL_DYNAMIC_DRAW);
-		mIndexData = gl::Vbo::create(GL_ELEMENT_ARRAY_BUFFER, mIndices, GL_DYNAMIC_DRAW);
-		mVboMesh = gl::VboMesh::create(mVerts.size(), GL_TRIANGLES, { { mPositionLayout, mPositionData }, { mColorLayout, mColorData } }, mIndices.size(), GL_UNSIGNED_INT, mIndexData);
+		mPositionData->bufferData(mVerts.size()*sizeof(vec3), mVerts.data(), GL_DYNAMIC_DRAW);
+		mColorData->bufferData(mColors.size()*sizeof(vec4), mColors.data(), GL_DYNAMIC_DRAW);
+		mIndexData->bufferData(mIndices.size()*sizeof(uint32_t), mIndices.data(), GL_DYNAMIC_DRAW);
 	}
 	mVboMesh = gl::VboMesh::create(mVerts.size(), GL_TRIANGLES, { { mPositionLayout, mPositionData }, { mColorLayout, mColorData } }, mIndices.size(), GL_UNSIGNED_INT, mIndexData);
 	if (!pInit)
