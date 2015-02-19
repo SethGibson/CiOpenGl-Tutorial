@@ -40,8 +40,8 @@ public:
 
 void LessonIndexedVBODynamicApp::setup()
 {
-	mMaxX = 16;
-	mMaxY = 16;
+	mMaxX = 100;
+	mMaxY = 100;
 	try
 	{
 		mGlsl = gl::GlslProg::create(loadAsset("inst_simple_vert.glsl"), loadAsset("inst_simple_frag.glsl"));
@@ -154,8 +154,8 @@ void LessonIndexedVBODynamicApp::mouseDrag(MouseEvent event)
 
 void LessonIndexedVBODynamicApp::update()
 {
-	mMaxX = randInt(4, 16);
-	mMaxY = randInt(4, 16);
+	mMaxX = randInt(50, 200);
+	mMaxY = randInt(50, 200);
 	int r = mMaxX % 2;
 	if (r > 0)mMaxX += r;
 	r = mMaxY % 2;
@@ -168,9 +168,8 @@ void LessonIndexedVBODynamicApp::draw()
 {
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
 	gl::setMatrices(mMayaCam.getCamera());
-	gl::enableWireframe();
 	mBatch->draw();
-	gl::disableWireframe();
+
 	gl::setMatricesWindow(getWindowSize());
 	gl::drawString("Frames Per Second: " + to_string(getAverageFps()), vec2(10));
 }
