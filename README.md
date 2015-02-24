@@ -22,6 +22,8 @@ Original content can be found at/taken from:<br/>
 * LessonInstancing: Drawing Instanced Geometry with per-Instance Attributes
 
 ### Coming Soon (Subject to Change)
+* LessonVBORanged: Dynamic VBOs using ranged buffers
+* LessonVBOSubBuffer: Dynamic VBOs using sub buffering
 * LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes
 * LessonLightingBasic1: Diffuse Lighting and Normals Generation
 * LessonLightingBasic2: Diffuse+Ambient
