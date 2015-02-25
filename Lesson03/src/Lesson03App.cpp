@@ -51,6 +51,10 @@ void Lesson03App::setup()
 	mCamera.lookAt(vec3(3, 3, 3), vec3(0), vec3(0, 1, 0));
 
 	// Since we're creating a cube, that means many more verts!
+	// If you're already familiar with OpenGL, yes, this is the brute force way of doing this and
+	// we should be using indices, we'll get to that in a later lesson.
+	// If you're not familiar with opengl and 3d primitives, just know for now that we need
+	// one vert per triangle point and two triangles per cube face, so 3 * 2 * 6 = 36
 	vector<vec3> cVertices =
 	{
 		vec3(-1.0f, -1.0f, -1.0f),	vec3(-1.0f, -1.0f, 1.0f),	vec3(-1.0f, 1.0f, 1.0f),
@@ -67,6 +71,7 @@ void Lesson03App::setup()
 		vec3(1.0f, 1.0f, 1.0f),		vec3(-1.0f, 1.0f, 1.0f),	vec3(1.0f, -1.0f, 1.0f)
 	};
 
+	// We also need one color per vertex
 	vector<vec4> cColors = 
 	{
 		vec4(0.583f, 0.771f, 0.014f, 1.0f), vec4(0.609f, 0.115f, 0.436f, 1.0f), vec4(0.327f, 0.483f, 0.844f, 1.0f),
@@ -89,7 +94,7 @@ void Lesson03App::setup()
 	mColorData = gl::Vbo::create(GL_ARRAY_BUFFER, cColors, GL_STATIC_DRAW);
 	mColorLayout.append(geom::Attrib::COLOR, geom::DataType::FLOAT, 4, sizeof(vec4), 0);
 
-	mCubeMesh = gl::VboMesh::create(36, GL_TRIANGLES, { { mPositionLayout, mPositionData }, { mColorLayout, mColorData } });
+	mCubeMesh = gl::VboMesh::create(6*6, GL_TRIANGLES, { { mPositionLayout, mPositionData }, { mColorLayout, mColorData } });
 	mBatch = gl::Batch::create(mCubeMesh, mGlsl);
 }
 
@@ -99,9 +104,6 @@ void Lesson03App::update()
 
 void Lesson03App::draw()
 {
-	gl::enableDepthRead();
-	gl::enableDepthWrite();
-
 	gl::clear(Color(0, 0, 0.15f));
 	gl::setMatrices(mCamera);
 	mBatch->draw();

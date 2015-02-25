@@ -53,9 +53,11 @@ void Lesson02App::setup()
 	//	the commands and parameters map 1-to-1.
 	//	So, perspective matrix first.  Note how CameraPersp::setPerspective() maps to
 	//	glm::perspective():
+	//glm::mat4 perspective(float fovy, float aspect, float zNear, float zFar);
 	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
 
 	// Now the view matrix.  Once again, note the mapping:
+	// glm::mat4 glm::lookAt(glm::vec3 const & eye,	glm::vec3 const & center, glm::vec3 const & up);
 	mCamera.lookAt(vec3(4, 3, 3), vec3(0), vec3(0, 1, 0));
 
 	//	Since we're in 3d space now, we'll change our vertex coords to properly reflect
@@ -79,7 +81,7 @@ void Lesson02App::draw()
 	gl::clear(Color(0, 0, 0.15f));
 
 	//	Now we set our modelviewprojection matrix, based on the camera we set up earlier.
-	//	Everything will be drawin relative to the camera until we specify new matrices.
+	//	Everything will be drawn relative to the camera until we specify new matrices.
 	gl::setMatrices(mCamera);
 	mBatch->draw();
 }
