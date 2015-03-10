@@ -25,10 +25,8 @@ Original content can be found at/taken from:<br/>
 * LessonVBORanged: Dynamic VBOs using ranged buffers
 * LessonVBOSubBuffer: Dynamic VBOs using sub buffering
 * LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes
-* LessonLightingBasic1: Diffuse Lighting and Normals Generation
-* LessonLightingBasic2: Diffuse+Ambient
-* LessonLightingBasic3: Diffuse+Ambient+Specular
-* LessonLightingAll: Diffuse+Ambient+Specular+Normal Mapping
+* LessonLightingBasic1: Diffuse+Ambient+Specular
+* LessonLightingBasic2: Diffuse+Ambient+Specular+Normal Mapping
 * LessonRTT1: Shadow Maps
 * LessonRTT2: Skyboxes
 * LessonRTT3: FSFX
