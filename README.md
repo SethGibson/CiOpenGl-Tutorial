@@ -20,12 +20,13 @@ Original content can be found at/taken from:<br/>
 * LessonIndexedVBO: Drawing VBOMesh with Indices
 * LessonIndexedVBODynamic: Drawing VBOMesh with Dynamic Attributes
 * LessonInstancing: Drawing Instanced Geometry with per-Instance Attributes
+* LessonLightingBasic1: Diffuse+Ambient+Specular
+
 
 ### Coming Soon (Subject to Change)
 * LessonVBORanged: Dynamic VBOs using ranged buffers
 * LessonVBOSubBuffer: Dynamic VBOs using sub buffering
 * LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes
-* LessonLightingBasic1: Diffuse+Ambient+Specular
 * LessonLightingBasic2: Diffuse+Ambient+Specular+Normal Mapping
 * LessonRTT1: Shadow Maps
 * LessonRTT2: Skyboxes
