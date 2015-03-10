@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C29DE23F-1A55-4E03-A290-882750FFED4F}</ProjectGuid>
-    <RootNamespace>LessonVBORanged</RootNamespace>
+    <ProjectGuid>{9DDB0966-F443-4238-BDD8-DA60D874E5AB}</ProjectGuid>
+    <RootNamespace>LightingBasics1</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,14 +107,18 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\LessonVBORangedApp.cpp" />
+    <ClCompile Include="..\src\LightingBasics1App.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\assets\vbo_ranged_frag.glsl" />
-    <None Include="..\assets\vbo_ranged_vert.glsl" />
+    <None Include="..\assets\basic_lighting_light.frag" />
+    <None Include="..\assets\basic_lighting_light.vert" />
+    <None Include="..\assets\basic_lighting_plane.frag" />
+    <None Include="..\assets\basic_lighting_plane.vert" />
+    <None Include="..\assets\basic_lighting_torus.frag" />
+    <None Include="..\assets\basic_lighting_torus.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

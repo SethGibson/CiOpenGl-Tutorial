@@ -43,7 +43,7 @@ private:
 
 void LessonVBORangedApp::setup()
 {
-	getWindow()->setSize(800, 600);
+	getWindow()->setSize(1280, 720);
 	try
 	{
 		mShaderObj = gl::GlslProg::create(loadAsset("vbo_ranged_vert.glsl"), loadAsset("vbo_ranged_frag.glsl"));
@@ -62,8 +62,8 @@ void LessonVBORangedApp::setup()
 	{
 		for (int px = 0; px < S_BUFFER_DIM; ++px)
 		{
-			mPositions.push_back(vec3(lmap<float>(px, 0, S_BUFFER_DIM, -1.0f, 1.0f),
-										lmap<float>(py, 0, S_BUFFER_DIM, -1.0f, 1.0f),
+			mPositions.push_back(vec3(lmap<float>(px, 0, S_BUFFER_DIM, -1.6f, 1.6f),
+										lmap<float>(py, 0, S_BUFFER_DIM, -0.9f, 0.9f),
 										0.0f));
 		}
 	}
