@@ -2,6 +2,8 @@
 
 uniform mat4 ciModelViewProjection;
 uniform mat4 ciModelMatrix;
+uniform mat3 ciNormalMatrix;
+
 in vec4 ciPosition;
 in vec3 ciNormal;
 in vec3 iPosition;

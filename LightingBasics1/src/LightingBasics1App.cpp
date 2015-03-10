@@ -33,8 +33,9 @@ private:
 	gl::BatchRef			mTorusBatch;
 	gl::GlslProgRef			mTorusShader;
 
+	vec3					mLightPos;
 	Color					mLightColor;
-	float					mAmbientScale;
+	float					mAmbientScale, mSpecScale, mSpecPow;
 	gl::VboMeshRef			mLightMesh;
 	gl::BatchRef			mLightBatch;
 	gl::GlslProgRef			mLightShader;
@@ -53,7 +54,10 @@ void LightingBasics1App::setup()
 {
 	getWindow()->setSize(1280, 720);
 	mLightColor = Color(1, 1, 0);
+	mLightPos = vec3(0,0.75,0);
 	mAmbientScale = 1.0f;
+	mSpecScale = 1.0f;
+	mSpecPow = 32.f;
 
 	try
 	{
@@ -80,10 +84,13 @@ void LightingBasics1App::setup()
 	mInstanceAttribs.append(geom::CUSTOM_1, 4, sizeof(ITorus), offsetof(ITorus, IColor), 1);
 	mTorusMesh->appendVbo(mInstanceAttribs, mInstanceData);
 	mTorusBatch = gl::Batch::create(mTorusMesh, mTorusShader, { { geom::CUSTOM_0, "iPosition" }, { geom::CUSTOM_1, "iColor" } });
+	mTorusBatch->getGlslProg()->uniform("LightPosition", mLightPos);
 	mTorusBatch->getGlslProg()->uniform("LightColor", mLightColor);
-	mTorusBatch->getGlslProg()->uniform("AmbientScale", mLightColor);
+	mTorusBatch->getGlslProg()->uniform("AmbientScale", mAmbientScale);
+	mTorusBatch->getGlslProg()->uniform("SpecularScale", mSpecScale);
+	mTorusBatch->getGlslProg()->uniform("SpecularPower", mSpecPow);
 
-	mLightMesh = gl::VboMesh::create(geom::Sphere().subdivisions(16).center(vec3(2,1,2)).radius(0.1f));
+	mLightMesh = gl::VboMesh::create(geom::Sphere().subdivisions(16).center(mLightPos).radius(0.01f));
 	mLightBatch = gl::Batch::create(mLightMesh, mLightShader);
 	mLightBatch->getGlslProg()->uniform("LightColor", mLightColor);
 
@@ -99,6 +106,8 @@ void LightingBasics1App::setup()
 	mGUI = params::InterfaceGl::create("Params", vec2(200, 200));
 	mGUI->addParam("Light Color", &mLightColor);
 	mGUI->addParam("Ambient Strength", &mAmbientScale);
+	mGUI->addParam("Specular Strength", &mSpecScale);
+	mGUI->addParam("Specular Power", &mSpecPow);
 
 	gl::enableDepthRead();
 	gl::enableDepthWrite();
@@ -129,9 +138,11 @@ void LightingBasics1App::draw()
 	mLightBatch->getGlslProg()->uniform("LightColor", mLightColor);
 	mLightBatch->draw();
 
-	mTorusBatch->getGlslProg()->uniform("LightPosition", mMayaUI.getCamera().getEyePoint());
+	mTorusBatch->getGlslProg()->uniform("ViewDirection", mMayaUI.getCamera().getViewDirection());
 	mTorusBatch->getGlslProg()->uniform("LightColor", mLightColor);
 	mTorusBatch->getGlslProg()->uniform("AmbientScale", mAmbientScale);
+	mTorusBatch->getGlslProg()->uniform("SpecularScale", mSpecScale);
+	mTorusBatch->getGlslProg()->uniform("SpecularPower", mSpecPow);
 	mTorusBatch->drawInstanced(4);
 
 	gl::setMatricesWindow(getWindowSize());
