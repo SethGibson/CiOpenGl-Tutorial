@@ -11,7 +11,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LightingBasics2App : public AppNative
+class LessonLightingBasics2App : public AppNative
 {
 public:
 	void setup();
@@ -50,7 +50,7 @@ private:
 	params::InterfaceGlRef	mGUI;
 };
 
-void LightingBasics2App::setup()
+void LessonLightingBasics2App::setup()
 {
 	getWindow()->setSize(1280, 720);
 	mLightColor = Color(1, 1, 0);
@@ -113,21 +113,21 @@ void LightingBasics2App::setup()
 	gl::enableDepthWrite();
 }
 
-void LightingBasics2App::mouseDown(MouseEvent event)
+void LessonLightingBasics2App::mouseDown(MouseEvent event)
 {
 	mMayaUI.mouseDown(event.getPos());
 }
 
-void LightingBasics2App::mouseDrag(MouseEvent event)
+void LessonLightingBasics2App::mouseDrag(MouseEvent event)
 {
 	mMayaUI.mouseDrag(event.getPos(), event.isLeftDown(), false, event.isRightDown());
 }
 
-void LightingBasics2App::update()
+void LessonLightingBasics2App::update()
 {
 }
 
-void LightingBasics2App::draw()
+void LessonLightingBasics2App::draw()
 {
 	// clear out the window with black
 	gl::clear(Color(0, 0, 0));
@@ -155,4 +155,4 @@ void LightingBasics2App::draw()
 	mGUI->draw();
 }
 
-CINDER_APP_NATIVE(LightingBasics2App, RendererGl)
+CINDER_APP_NATIVE(LessonLightingBasics2App, RendererGl)

@@ -14,14 +14,14 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Source Files\shaders">
-      <UniqueIdentifier>{fc596cee-d93c-4a30-a09d-bc86eb1279c4}</UniqueIdentifier>
+      <UniqueIdentifier>{3edf8cf3-122d-4a07-b80b-592efa981276}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\LightingBasics1App.cpp">
+    <ClCompile Include="..\src\LessonLightingBasics2App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\LightingBasics1App.cpp">
+    <ClCompile Include="..\src\LessonLightingBasics2App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">
@@ -37,25 +37,5 @@
     <ResourceCompile Include="Resources.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\assets\basic_lighting_torus.frag">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_torus.vert">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_light.frag">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_light.vert">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_plane.frag">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_plane.vert">
-      <Filter>Source Files\shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

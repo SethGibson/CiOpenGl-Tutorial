@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9DDB0966-F443-4238-BDD8-DA60D874E5AB}</ProjectGuid>
-    <RootNamespace>LightingBasics1</RootNamespace>
+    <RootNamespace>LessonLightingBasics1</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -107,7 +107,7 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\LightingBasics1App.cpp" />
+    <ClCompile Include="..\src\LessonLightingBasics1App.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
