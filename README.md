@@ -14,7 +14,8 @@ Original content can be found at/taken from:<br/>
 * My brain
 
 ## Installation Notes
-Clone this anywhere on your system and add an environment variable called **CINDER_DEV**, which should point to the top level of your glNext install, e.g. **C:\dev\libraries\Cinder** or something like that.  The environment variable is optional, but be sure to change the VS projects to point to your Cinder install otherwise.
+* Clone this anywhere on your system and add an environment variable called **CINDER_DEV**, which should point to the top level of your glNext install, e.g. **C:\dev\libraries\Cinder** or something like that.  The environment variable is optional, but be sure to change the VS projects to point to your Cinder install otherwise.
+* Each project has an individual solution, or you can open the included CiOpenGl-Tutorial.sln.
 
 ## Lessons
 * Lesson01: Triangle
