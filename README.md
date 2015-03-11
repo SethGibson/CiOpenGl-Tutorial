@@ -10,6 +10,7 @@ Original content can be found at/taken from:<br/>
 
 * [OpenGL-Tutorial.org](http://www.opengl-tutorial.org)
 * [OGLDev's Modern OpenGL Tutorials](http://ogldev.atspace.co.uk/)
+* [Learn OpenGL](http://learnopengl.com/)
 * My brain
 
 ## Lessons
