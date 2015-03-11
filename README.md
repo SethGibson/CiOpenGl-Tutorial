@@ -1,5 +1,4 @@
 # CiOpenGl-Tutorial
-**UPDATE (2015.03.10):** Added LightingBasic1
 
 Gettings started with Cinder glNext(0.9.0?)'s new OpenGL API.
 
