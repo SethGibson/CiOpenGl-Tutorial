@@ -1,14 +1,20 @@
 # CiOpenGl-Tutorial
+**UPDATE (2015.03.10):** Added LightingBasic1
+
 Gettings started with Cinder glNext(0.9.0?)'s new OpenGL API.
 
-_DISCLAIMER: As of today (2015.02.18), this project should be considered experimental as Cinder's API is subject to change!_
+_DISCLAIMER: This project should be considered experimental until expressly stated otherwise, as Cinder's API is subject to change!_
 
 This repo is a port of various modern OpenGL tutorials to Cinder, both for learning purposes and as stubs for other work.<br/>
 Original content can be found at/taken from:<br/>
 
 * [OpenGL-Tutorial.org](http://www.opengl-tutorial.org)
 * [OGLDev's Modern OpenGL Tutorials](http://ogldev.atspace.co.uk/)
+* [Learn OpenGL](http://learnopengl.com/)
 * My brain
+
+## Installation Notes
+Clone this anywhere on your system and add an environment variable called **CINDER_DEV**, which should point to the top level of your glNext install, e.g. **C:\dev\libraries\Cinder** or something like that.  The environment variable is optional, but be sure to change the VS projects to point to your Cinder install otherwise.
 
 ## Lessons
 * Lesson01: Triangle
