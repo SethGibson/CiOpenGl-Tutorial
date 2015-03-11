@@ -13,6 +13,9 @@ Original content can be found at/taken from:<br/>
 * [Learn OpenGL](http://learnopengl.com/)
 * My brain
 
+## Installation Notes
+Clone this anywhere on your system and add an environment variable called CINDER_DEV, which should point to the top level of your glNext install, e.g. C:\dev\libraries\Cinder or something like that (optional). 
+
 ## Lessons
 * Lesson01: Triangle
 * Lesson02: Camera
