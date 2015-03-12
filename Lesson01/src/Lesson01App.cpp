@@ -5,7 +5,7 @@ Original Tutorial:
 http://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
@@ -14,7 +14,8 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson01App : public AppNative {
+class Lesson01App : public App
+{
 public:
 	void	setup() override;
 	void	update() override;
@@ -29,6 +30,8 @@ public:
 
 void Lesson01App::setup()
 {
+	auto ad = getAssetPath("simple_vert.glsl");
+
 	getWindow()->setSize(1024, 768);
 
 	//	Load our shaders first.  In this tutorial series, everything uses shaders
@@ -104,4 +107,4 @@ void Lesson01App::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE( Lesson01App, RendererGl )
+CINDER_APP( Lesson01App, RendererGl )

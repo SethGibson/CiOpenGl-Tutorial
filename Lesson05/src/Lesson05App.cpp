@@ -7,7 +7,7 @@ Well, actually this one only follows opengl-tutorial.org in topic.
 Let's set up Cinder's MayaCamUI to get some simple mouse interaction
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
@@ -20,7 +20,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson05App : public AppNative {
+class Lesson05App : public App {
 public:
 	void	setup() override;
 	void	update() override;
@@ -114,4 +114,4 @@ void Lesson05App::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE( Lesson05App, RendererGl )
+CINDER_APP( Lesson05App, RendererGl )

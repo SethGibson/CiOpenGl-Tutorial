@@ -8,7 +8,7 @@ In this tutorial, we'll take a look at using custom datatypes to pass data to a 
 use a single VBO for all of our vertex data.
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
@@ -20,7 +20,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson04bApp : public AppNative
+class Lesson04bApp : public App
 {
 public:
 	void	setup() override;
@@ -99,4 +99,4 @@ void Lesson04bApp::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE(Lesson04bApp, RendererGl)
+CINDER_APP(Lesson04bApp, RendererGl)

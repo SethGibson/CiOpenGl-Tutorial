@@ -1,4 +1,4 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/GeomIo.h"
@@ -10,7 +10,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LessonIndexedVBOApp : public AppNative
+class LessonIndexedVBOApp : public App
 {
 public:
 	void setup() override;
@@ -78,4 +78,4 @@ void LessonIndexedVBOApp::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE(LessonIndexedVBOApp, RendererGl)
+CINDER_APP(LessonIndexedVBOApp, RendererGl)

@@ -1,4 +1,4 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/GeomIo.h"
@@ -12,7 +12,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LessonIndexedVBODynamicApp : public AppNative
+class LessonIndexedVBODynamicApp : public App
 {
 public:
 	void setup() override;
@@ -175,4 +175,4 @@ void LessonIndexedVBODynamicApp::draw()
 	gl::drawString("Frames Per Second: " + to_string(getAverageFps()), vec2(10));
 }
 
-CINDER_APP_NATIVE(LessonIndexedVBODynamicApp, RendererGl)
+CINDER_APP(LessonIndexedVBODynamicApp, RendererGl)

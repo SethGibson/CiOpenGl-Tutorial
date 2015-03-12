@@ -1,4 +1,4 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Batch.h"
@@ -11,7 +11,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LessonLightingBasics1App : public AppNative
+class LessonLightingBasics1App : public App
 {
 public:
 	void setup();
@@ -59,6 +59,8 @@ void LessonLightingBasics1App::setup()
 	mSpecScale = 1.0f;
 	mSpecPow = 32.f;
 
+	auto ad = getAssetPath("basic_lighting_torus.vert");
+	
 	try
 	{
 		mTorusShader = gl::GlslProg::create(loadAsset("basic_lighting_torus.vert"), loadAsset("basic_lighting_torus.frag"));
@@ -149,4 +151,4 @@ void LessonLightingBasics1App::draw()
 	mGUI->draw();
 }
 
-CINDER_APP_NATIVE( LessonLightingBasics1App, RendererGl )
+CINDER_APP( LessonLightingBasics1App, RendererGl )

@@ -10,7 +10,7 @@ I recommend reading the original tutorial as it'll give you a good understanding
 CameraPersp is probably doing under the hood.
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
@@ -20,7 +20,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson02App : public AppNative {
+class Lesson02App : public App {
 public:
 	void	setup() override;
 	void	update() override;
@@ -85,4 +85,4 @@ void Lesson02App::draw()
 	gl::setMatrices(mCamera);
 	mBatch->draw();
 }
-CINDER_APP_NATIVE( Lesson02App, RendererGl )
+CINDER_APP( Lesson02App, RendererGl )

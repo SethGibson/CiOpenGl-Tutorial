@@ -1,4 +1,4 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Batch.h"
@@ -11,7 +11,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LessonLightingBasics2App : public AppNative
+class LessonLightingBasics2App : public App
 {
 public:
 	void setup();
@@ -155,4 +155,4 @@ void LessonLightingBasics2App::draw()
 	mGUI->draw();
 }
 
-CINDER_APP_NATIVE(LessonLightingBasics2App, RendererGl)
+CINDER_APP(LessonLightingBasics2App, RendererGl)

@@ -1,4 +1,4 @@
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/GeomIo.h"
@@ -12,7 +12,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LessonInstancingApp : public AppNative
+class LessonInstancingApp : public App
 {
 public:
 	void setup() override;
@@ -113,4 +113,4 @@ void LessonInstancingApp::draw()
 	mParticleBatch->drawInstanced(4);
 }
 
-CINDER_APP_NATIVE( LessonInstancingApp, RendererGl )
+CINDER_APP( LessonInstancingApp, RendererGl )

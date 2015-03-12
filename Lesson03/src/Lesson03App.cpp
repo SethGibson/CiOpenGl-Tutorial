@@ -7,7 +7,7 @@ http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
 In this tutorial, we'll draw an actual 3d primitive and practice setting up more attributes.
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
@@ -17,7 +17,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson03App : public AppNative {
+class Lesson03App : public App {
 public:
 	void	setup() override;
 	void	update() override;
@@ -109,4 +109,4 @@ void Lesson03App::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE( Lesson03App, RendererGl )
+CINDER_APP( Lesson03App, RendererGl )

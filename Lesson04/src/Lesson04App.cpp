@@ -9,7 +9,7 @@ we'll use multiple VBOs.  Next tutorial we'll look at using structs to pass mult
 to the VBO.
 */
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
@@ -21,7 +21,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class Lesson04App : public AppNative {
+class Lesson04App : public App {
 public:
 	void	setup() override;
 	void	update() override;
@@ -103,4 +103,4 @@ void Lesson04App::draw()
 	mBatch->draw();
 }
 
-CINDER_APP_NATIVE( Lesson04App, RendererGl )
+CINDER_APP( Lesson04App, RendererGl )
