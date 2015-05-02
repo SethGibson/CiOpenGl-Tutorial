@@ -13,6 +13,7 @@ Original content can be found at/taken from:<br/>
 * My brain
 
 ## Installation Notes
+* Update your Cinder dev branch to the most recent commit.
 * Clone this anywhere on your system and add an environment variable called **CINDER_DEV**, which should point to the top level of your glNext install, e.g. **C:\dev\libraries\Cinder** or something like that.  The environment variable is optional, but be sure to change the VS projects to point to your Cinder install otherwise.
 * Each project has an individual solution, or you can open the included **CiOpenGl-Tutorial.sln**.
 
@@ -27,12 +28,13 @@ Original content can be found at/taken from:<br/>
 * LessonIndexedVBODynamic: Drawing VBOMesh with Dynamic Attributes
 * LessonInstancing: Drawing Instanced Geometry with per-Instance Attributes
 * LessonLightingBasic1: Diffuse+Ambient+Specular
+* LessonBillboards: Instanced Billboards
 
 
 ### Coming Soon (Subject to Change)
 * LessonVBORanged: Dynamic VBOs using ranged buffers
 * LessonVBOSubBuffer: Dynamic VBOs using sub buffering
-* LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes
+* LessonInstancingDynamic: Instanced Geometry with Dynamic per-Instance Attributes (Particles)
 * LessonLightingBasic2: Diffuse+Ambient+Specular+Normal Mapping
 * LessonRTT1: Shadow Maps
 * LessonRTT2: Skyboxes
