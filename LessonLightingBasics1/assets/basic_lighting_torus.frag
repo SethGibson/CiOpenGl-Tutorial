@@ -17,7 +17,7 @@ out vec4 oColor;
 void main()
 {
 	vec3 cNormal = normalize(ObjectNormal);
-	vec3 cLightDir = normalize(LightPosition - vec3(WorldPosition.xyz));
+	vec3 cLightDir = normalize(LightPosition - WorldPosition.xyz);
 	vec3 cEyeDir = normalize(ViewDirection);
 	vec3 cReflectDir = reflect(cLightDir, cNormal);
 

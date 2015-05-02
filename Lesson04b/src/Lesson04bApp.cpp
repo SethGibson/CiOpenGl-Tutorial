@@ -14,6 +14,7 @@ use a single VBO for all of our vertex data.
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/gl/scoped.h"
 #include "cinder/ImageIo.h"
 
 using namespace ci;

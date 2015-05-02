@@ -39,10 +39,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\assets\inst_simple_frag.glsl">
+    <None Include="..\assets\dyn_vbo_frag.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
-    <None Include="..\assets\inst_simple_vert.glsl">
+    <None Include="..\assets\dyn_vbo_vert.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
   </ItemGroup>

@@ -1,3 +1,10 @@
+/*
+Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+
+Index VBOs: Drawing a VBO Mesh using an index buffer to re-use vertex positions
+Reference:
+http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/
+*/
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
@@ -31,7 +38,7 @@ void LessonIndexedVBOApp::setup()
 {
 	try
 	{
-		mGlsl = gl::GlslProg::create(loadAsset("inst_simple_vert.glsl"), loadAsset("inst_simple_frag.glsl"));
+		mGlsl = gl::GlslProg::create(loadAsset("index_vbo_vert.glsl"), loadAsset("index_vbo_frag.glsl"));
 	}
 	catch (const gl::GlslProgExc &e)
 	{
@@ -53,7 +60,7 @@ void LessonIndexedVBOApp::setup()
 	mPositionLayout.append(geom::Attrib::POSITION, 3, 0, 0, 0);
 
 	mIndexData = gl::Vbo::create(GL_ELEMENT_ARRAY_BUFFER, cIndices, GL_STATIC_DRAW);
-	mVboMesh = gl::VboMesh::create(4, GL_TRIANGLES, { { mPositionLayout, mPositionData } }, cIndices.size(), GL_UNSIGNED_SHORT, mIndexData);
+	mVboMesh = gl::VboMesh::create(cIndices.size(), GL_TRIANGLES, { { mPositionLayout, mPositionData } }, cIndices.size(), GL_UNSIGNED_SHORT, mIndexData);
 
 	mBatch = gl::Batch::create(mVboMesh, mGlsl);
 

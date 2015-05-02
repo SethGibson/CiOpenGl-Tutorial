@@ -1,3 +1,13 @@
+/*
+Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+
+Dynamic VBOs: Drawing a VBO Mesh with per-frame buffer data updates
+Reference:
+https://www.opengl.org/wiki/Buffer_Object_Streaming
+
+NOTE: This is not a complete implimentation of the techniques presented above
+This techinque DOES NOT work on some lower end hardware (Intel HD, for example)
+*/
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
@@ -5,7 +15,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
-#include "cinder/MayaCamUI.h"
+#include "cinder/CameraUi.h"
 #include "cinder/Rand.h"
 
 using namespace ci;
@@ -16,8 +26,6 @@ class LessonIndexedVBODynamicApp : public App
 {
 public:
 	void setup() override;
-	void mouseDown(MouseEvent event) override;
-	void mouseDrag(MouseEvent event) override;
 	void update() override;
 	void draw() override;
 
@@ -30,7 +38,7 @@ public:
 	gl::GlslProgRef mGlsl;
 
 	CameraPersp mCamera;
-	MayaCamUI mMayaCam;
+	CameraUi	mCamUI;
 
 	int mMaxX, mMaxY, mMaxVerts;
 	vector<vec3> mVerts;
@@ -40,11 +48,11 @@ public:
 
 void LessonIndexedVBODynamicApp::setup()
 {
-	mMaxX = 50;
-	mMaxY = 50;
+	mMaxX = 200;
+	mMaxY = 200;
 	try
 	{
-		mGlsl = gl::GlslProg::create(loadAsset("inst_simple_vert.glsl"), loadAsset("inst_simple_frag.glsl"));
+		mGlsl = gl::GlslProg::create(loadAsset("dyn_vbo_vert.glsl"), loadAsset("dyn_vbo_frag.glsl"));
 	}
 	catch (const gl::GlslProgExc &e)
 	{
@@ -56,10 +64,12 @@ void LessonIndexedVBODynamicApp::setup()
 	populateBuffers(true);
 	mBatch = gl::Batch::create(mVboMesh, mGlsl);
 
+	vec3 cEyePos = vec3(0, 0, 5);
+	float cPivotDist = length(cEyePos);
 	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
-	mCamera.lookAt(vec3(0, 0, 5), vec3(0), vec3(0, 1, 0));
-	mCamera.setCenterOfInterestPoint(vec3(0));
-	mMayaCam.setCurrentCam(mCamera);
+	mCamera.lookAt(cEyePos, vec3(0), vec3(0, 1, 0));
+	mCamera.setPivotDistance(cPivotDist);
+	mCamUI = CameraUi(&mCamera, getWindow());
 
 	getWindow()->setSize(640,360);
 	setFrameRate(30);
@@ -143,16 +153,6 @@ void LessonIndexedVBODynamicApp::populateBuffers(bool pInit)
 		mBatch->replaceVboMesh(mVboMesh);
 }
 
-void LessonIndexedVBODynamicApp::mouseDown(MouseEvent event)
-{
-	mMayaCam.mouseDown(event.getPos());
-}
-
-void LessonIndexedVBODynamicApp::mouseDrag(MouseEvent event)
-{
-	mMayaCam.mouseDrag(event.getPos(), event.isLeftDown(), false, event.isRightDown());
-}
-
 void LessonIndexedVBODynamicApp::update()
 {
 	mMaxX = randInt(25, 100);
@@ -168,7 +168,7 @@ void LessonIndexedVBODynamicApp::update()
 void LessonIndexedVBODynamicApp::draw()
 {
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
-	gl::setMatrices(mMayaCam.getCamera());
+	gl::setMatrices(mCamera);
 	mBatch->draw();
 
 	gl::setMatricesWindow(getWindowSize());

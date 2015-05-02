@@ -4,7 +4,7 @@
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
 #include "cinder/Camera.h"
-#include "cinder/MayaCamUI.h"
+#include "cinder/CameraUi.h"
 #include "cinder/params/Params.h"
 
 using namespace ci;
@@ -15,8 +15,6 @@ class LessonLightingBasics2App : public App
 {
 public:
 	void setup();
-	void mouseDown(MouseEvent event);
-	void mouseDrag(MouseEvent event);
 	void update();
 	void draw();
 
@@ -45,7 +43,7 @@ private:
 	gl::GlslProgRef			mPlaneShader;
 
 	CameraPersp				mCamera;
-	MayaCamUI				mMayaUI;
+	CameraUi				mCamUI;
 
 	params::InterfaceGlRef	mGUI;
 };
@@ -98,10 +96,11 @@ void LessonLightingBasics2App::setup()
 	mPlaneMesh = gl::VboMesh::create(geom::Plane());
 	mPlaneBatch = gl::Batch::create(mPlaneMesh, mPlaneShader);
 
+	vec3 cEyePos(0, 0.65f, -2.25f);
 	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
-	mCamera.lookAt(vec3(0, 0.65f, -2.25f), vec3(0), vec3(0, 1, 0));
-	mCamera.setCenterOfInterestPoint(vec3(0));
-	mMayaUI.setCurrentCam(mCamera);
+	mCamera.lookAt(cEyePos, vec3(0), vec3(0, 1, 0));
+	mCamera.setPivotDistance(length(cEyePos));
+	mCamUI = CameraUi(&mCamera, getWindow());
 
 	mGUI = params::InterfaceGl::create("Params", vec2(200, 200));
 	mGUI->addParam("Light Color", &mLightColor);
@@ -113,16 +112,6 @@ void LessonLightingBasics2App::setup()
 	gl::enableDepthWrite();
 }
 
-void LessonLightingBasics2App::mouseDown(MouseEvent event)
-{
-	mMayaUI.mouseDown(event.getPos());
-}
-
-void LessonLightingBasics2App::mouseDrag(MouseEvent event)
-{
-	mMayaUI.mouseDrag(event.getPos(), event.isLeftDown(), false, event.isRightDown());
-}
-
 void LessonLightingBasics2App::update()
 {
 }
@@ -131,7 +120,7 @@ void LessonLightingBasics2App::draw()
 {
 	// clear out the window with black
 	gl::clear(Color(0, 0, 0));
-	gl::setMatrices(mMayaUI.getCamera());
+	gl::setMatrices(mCamera);
 
 	mPlaneBatch->draw();
 
@@ -143,7 +132,7 @@ void LessonLightingBasics2App::draw()
 	mLightBatch->draw();
 	gl::popMatrices();
 
-	mTorusBatch->getGlslProg()->uniform("ViewDirection", mMayaUI.getCamera().getViewDirection());
+	mTorusBatch->getGlslProg()->uniform("ViewDirection", mCamera.getViewDirection());
 	mTorusBatch->getGlslProg()->uniform("LightPosition", mLightPos);
 	mTorusBatch->getGlslProg()->uniform("LightColor", mLightColor);
 	mTorusBatch->getGlslProg()->uniform("AmbientScale", mAmbientScale);

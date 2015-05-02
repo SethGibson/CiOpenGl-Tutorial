@@ -1,10 +1,20 @@
+/*
+Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+
+Basic Lighting: A simple ambient+diffuse+specular per-pixel lighting implementation
+We'll also look at how to use Cinder's built in params window to control our shader parameters
+
+Reference:
+http://learnopengl.com/#!Lighting/Basic-Lighting
+*/
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
+#include "cinder/gl/Shader.h"
 #include "cinder/Camera.h"
-#include "cinder/MayaCamUI.h"
+#include "cinder/CameraUi.h"
 #include "cinder/params/Params.h"
 
 using namespace ci;
@@ -15,8 +25,6 @@ class LessonLightingBasics1App : public App
 {
 public:
 	void setup();
-	void mouseDown( MouseEvent event );	
-	void mouseDrag(MouseEvent event);
 	void update();
 	void draw();
 
@@ -45,7 +53,7 @@ private:
 	gl::GlslProgRef			mPlaneShader;
 
 	CameraPersp				mCamera;
-	MayaCamUI				mMayaUI;
+	CameraUi				mCamUI;
 
 	params::InterfaceGlRef	mGUI;
 };
@@ -74,13 +82,13 @@ void LessonLightingBasics1App::setup()
 
 	vector<ITorus> cPositions =
 	{	
-		ITorus(vec3(-1.25, 0.5, -1.25), vec4(0.5,0.25,0,1)),
-		ITorus(vec3(1.25, 0.5, -1.25), vec4(0.25, 0.25, 0.1, 1)),
-		ITorus(vec3(-1.25, 0.5, 1.25), vec4(0.1, 0.25, 0.25, 1)),
-		ITorus(vec3(1.25, 0.5, 1.25), vec4(0.0, 0.25, 0.5, 1))
+		ITorus(vec3(-1, 0.25, -1), vec4(0.5,0.25,0,1)),
+		ITorus(vec3(1, 0.25, -1), vec4(0.25, 0.25, 0.1, 1)),
+		ITorus(vec3(-1, 0.25, 1), vec4(0.1, 0.25, 0.25, 1)),
+		ITorus(vec3(1, 0.25, 1), vec4(0.0, 0.25, 0.5, 1))
 	};
 
-	mTorusMesh = gl::VboMesh::create(geom::Torus().radius(0.25f, 0.2f));
+	mTorusMesh = gl::VboMesh::create(geom::Torus().radius(0.8f, 0.6f));
 	mInstanceData = gl::Vbo::create(GL_ARRAY_BUFFER, cPositions, GL_STATIC_DRAW);
 	mInstanceAttribs.append(geom::CUSTOM_0, 3, sizeof(ITorus), offsetof(ITorus, IPosition), 1);
 	mInstanceAttribs.append(geom::CUSTOM_1, 4, sizeof(ITorus), offsetof(ITorus, IColor), 1);
@@ -100,11 +108,15 @@ void LessonLightingBasics1App::setup()
 	mPlaneMesh = gl::VboMesh::create(geom::Plane()); 
 	mPlaneBatch = gl::Batch::create(mPlaneMesh, mPlaneShader);
 
+	vec3 cEyePos = vec3(0, 0.65f, -2.25f);
 	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
-	mCamera.lookAt(vec3(0, 0.65f, -2.25f), vec3(0), vec3(0, 1, 0));
-	mCamera.setCenterOfInterestPoint(vec3(0));
-	mMayaUI.setCurrentCam(mCamera);
+	mCamera.lookAt(cEyePos, vec3(0), vec3(0, 1, 0));
+	mCamera.setPivotDistance(length(cEyePos));
+	mCamUI = CameraUi(&mCamera, getWindow());
 
+	//Now let's set up our parameter window
+	//There's really not too much to it at this point, just
+	//create the object and call addParam with a name and a pointer
 	mGUI = params::InterfaceGl::create("Params", vec2(200, 200));
 	mGUI->addParam("Light Color", &mLightColor);
 	mGUI->addParam("Ambient Strength", &mAmbientScale);
@@ -115,16 +127,6 @@ void LessonLightingBasics1App::setup()
 	gl::enableDepthWrite();
 }
 
-void LessonLightingBasics1App::mouseDown( MouseEvent event )
-{
-	mMayaUI.mouseDown(event.getPos());
-}
-
-void LessonLightingBasics1App::mouseDrag(MouseEvent event)
-{
-	mMayaUI.mouseDrag(event.getPos(), event.isLeftDown(), false, event.isRightDown());
-}
-
 void LessonLightingBasics1App::update()
 {
 }
@@ -133,14 +135,14 @@ void LessonLightingBasics1App::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) ); 
-	gl::setMatrices(mMayaUI.getCamera());
+	gl::setMatrices(mCamera);
 	
 	mPlaneBatch->draw();
 
 	mLightBatch->getGlslProg()->uniform("LightColor", mLightColor);
 	mLightBatch->draw();
 
-	mTorusBatch->getGlslProg()->uniform("ViewDirection", mMayaUI.getCamera().getViewDirection());
+	mTorusBatch->getGlslProg()->uniform("ViewDirection", mCamera.getViewDirection());
 	mTorusBatch->getGlslProg()->uniform("LightColor", mLightColor);
 	mTorusBatch->getGlslProg()->uniform("AmbientScale", mAmbientScale);
 	mTorusBatch->getGlslProg()->uniform("SpecularScale", mSpecScale);

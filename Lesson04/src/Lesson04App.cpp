@@ -99,8 +99,9 @@ void Lesson04App::draw()
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
 	gl::setMatrices(mCamera);
 	
-	gl::ScopedTextureBind cTexture(mTexture);
+	mTexture->bind(0);
 	mBatch->draw();
+	mTexture->unbind();
 }
 
 CINDER_APP( Lesson04App, RendererGl )

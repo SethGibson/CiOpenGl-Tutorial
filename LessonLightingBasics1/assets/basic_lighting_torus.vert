@@ -2,7 +2,6 @@
 
 uniform mat4 ciModelViewProjection;
 uniform mat4 ciModelMatrix;
-uniform mat3 ciNormalMatrix;
 
 in vec4 ciPosition;
 in vec3 ciNormal;
@@ -16,7 +15,10 @@ out vec4 WorldPosition;
 void main()
 {
 	Color = iColor;
-	ObjectNormal = ciNormal;
-	WorldPosition = ciModelMatrix*ciPosition;
-	gl_Position = ciModelViewProjection * (4.0*ciPosition + vec4(iPosition,0));
+	
+	ObjectNormal = mat3(transpose(inverse(ciModelMatrix)))*ciNormal;
+
+	vec4 cInstPos = ciPosition + vec4(iPosition,1.0);
+	WorldPosition = ciModelMatrix*cInstPos;
+	gl_Position = ciModelViewProjection * cInstPos;
 }

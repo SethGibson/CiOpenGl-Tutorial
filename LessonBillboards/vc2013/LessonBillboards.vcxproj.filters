@@ -14,14 +14,14 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Source Files\shaders">
-      <UniqueIdentifier>{3edf8cf3-122d-4a07-b80b-592efa981276}</UniqueIdentifier>
+      <UniqueIdentifier>{eb68d062-f76d-4566-b9a1-3df12ece3841}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\LessonLightingBasics2App.cpp">
+    <ClCompile Include="..\src\LessonBillboardsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\LessonLightingBasics2App.cpp">
+    <ClCompile Include="..\src\LessonBillboardsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="..\include\Resources.h">
@@ -39,22 +39,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\assets\basic_lighting_light.frag">
+    <None Include="..\assets\billboard_frag.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
-    <None Include="..\assets\basic_lighting_light.vert">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_plane.frag">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_plane.vert">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_torus.frag">
-      <Filter>Source Files\shaders</Filter>
-    </None>
-    <None Include="..\assets\basic_lighting_torus.vert">
+    <None Include="..\assets\billboard_vert.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#/* Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+/* Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
 
 Lesson 05: Simple camera and mouse input
 Original Tutorial:
@@ -12,9 +12,10 @@ Let's set up Cinder's MayaCamUI to get some simple mouse interaction
 #include "cinder/Camera.h"
 #include "cinder/gl/Batch.h"
 #include "cinder/gl/GlslProg.h"
+#include "cinder/gl/scoped.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/ImageIo.h"
-#include "cinder/MayaCamUI.h"
+#include "cinder/CameraUi.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -45,7 +46,7 @@ public:
 	gl::Texture2dRef	mTexture;
 
 	CameraPersp			mCamera;
-	MayaCamUI			mMayaCam;
+	CameraUi			mCamUi;
 };
 
 void Lesson05App::setup()
@@ -83,19 +84,21 @@ void Lesson05App::setup()
 	mBatch = gl::Batch::create(mMesh, mGlsl);
 
 	mCamera.setPerspective(45.0f, getWindowAspectRatio(), 0.1f, 100.0f);
-	mCamera.lookAt(vec3(0, -3, 3), vec3(0), vec3(0, 1, 0));
-	mCamera.setCenterOfInterestPoint(vec3(0));
-	mMayaCam.setCurrentCam(mCamera);
+	
+	vec3 cEyePos(0, -3, 3);
+	float cPivotDist = glm::length(cEyePos);
+	mCamera.lookAt(cEyePos, vec3(0), vec3(0, 1, 0));
+	mCamera.setPivotDistance(cPivotDist);
+	mCamUi = CameraUi(&mCamera, getWindow());
 }
 
 void Lesson05App::mouseDown(MouseEvent pEvent)
 {
-	mMayaCam.mouseDown(pEvent.getPos());
+	
 }
 
 void Lesson05App::mouseDrag(MouseEvent pEvent)
 {
-	mMayaCam.mouseDrag(pEvent.getPos(), pEvent.isLeftDown(), false, pEvent.isRightDown());
 }
 
 void Lesson05App::update()
@@ -108,7 +111,7 @@ void Lesson05App::draw()
 	gl::enableDepthWrite();
 
 	gl::clear(Color(0.1f, 0.15f, 0.25f));
-	gl::setMatrices(mMayaCam.getCamera());
+	gl::setMatrices(mCamera);
 	
 	gl::ScopedTextureBind cTexture(mTexture);
 	mBatch->draw();

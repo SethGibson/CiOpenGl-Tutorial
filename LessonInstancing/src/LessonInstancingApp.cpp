@@ -1,3 +1,12 @@
+/*
+Cinder OpenGL-Tutorial - Cinder GL tutorials based on www.opengl-tutorial.org
+
+Instancing: Using a VBO to "instance" meshes, that is defining and loading a mesh's vertex data once
+and drawing it multiple times with different attributes
+
+Reference:
+http://learnopengl.com/#!Advanced-OpenGL/Instancing
+*/
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/Camera.h"
@@ -79,10 +88,10 @@ void LessonInstancingApp::setup()
 
 	vector<CioParticle> cParticles =
 	{
-		CioParticle(vec3(-2.0,2.0,0.0),		vec4(1,0,0,1), 0.5f),
-		CioParticle(vec3(2.0,2.0,0.0),		vec4(0,1,0,1), 1.0f),
-		CioParticle(vec3(2.0,-2.0,0.0),		vec4(0,0,1,1), 1.2f),
-		CioParticle(vec3(-2.0,-2.0,0.0),	vec4(1,1,0,1), 1.5f)
+		CioParticle(vec3(-1.0,1.0,0.0),		vec4(1,0,0,1), 1.5f),
+		CioParticle(vec3(1.0,1.0,0.0),		vec4(0,1,0,1), 2.0f),
+		CioParticle(vec3(1.0,-1.0,0.0),		vec4(0,0,1,1), 3.0f),
+		CioParticle(vec3(-1.0,-1.0,0.0),	vec4(1,1,0,1), 3.5f)
 	};
 	mParticleData = gl::Vbo::create(GL_ARRAY_BUFFER, cParticles.size()*sizeof(CioParticle), cParticles.data(), GL_STATIC_DRAW);
 	mParticleLayout.append(geom::Attrib::CUSTOM_0, 3, sizeof(CioParticle), offsetof(CioParticle, IPosition), 1);
