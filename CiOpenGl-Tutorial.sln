@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LessonRTT1", "LessonRTT1\vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LessonBillboards", "LessonBillboards\vc2013\LessonBillboards.vcxproj", "{EA2C3760-6777-4658-AEB9-129E94740021}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LessonInstancingAdvanced", "LessonInstancingAdvanced\vc2013\LessonInstancingAdvanced.vcxproj", "{BBD1F9EC-16BF-4B74-B222-8C741939A4C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -86,6 +88,10 @@ Global
 		{EA2C3760-6777-4658-AEB9-129E94740021}.Debug|x64.Build.0 = Debug|x64
 		{EA2C3760-6777-4658-AEB9-129E94740021}.Release|x64.ActiveCfg = Release|x64
 		{EA2C3760-6777-4658-AEB9-129E94740021}.Release|x64.Build.0 = Release|x64
+		{BBD1F9EC-16BF-4B74-B222-8C741939A4C2}.Debug|x64.ActiveCfg = Debug|x64
+		{BBD1F9EC-16BF-4B74-B222-8C741939A4C2}.Debug|x64.Build.0 = Debug|x64
+		{BBD1F9EC-16BF-4B74-B222-8C741939A4C2}.Release|x64.ActiveCfg = Release|x64
+		{BBD1F9EC-16BF-4B74-B222-8C741939A4C2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
