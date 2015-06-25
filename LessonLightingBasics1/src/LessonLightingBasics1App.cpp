@@ -88,7 +88,7 @@ void LessonLightingBasics1App::setup()
 		ITorus(vec3(1, 0.25, 1), vec4(0.0, 0.25, 0.5, 1))
 	};
 
-	mTorusMesh = gl::VboMesh::create(geom::Torus().radius(0.8f, 0.6f));
+	mTorusMesh = gl::VboMesh::create(geom::Torus().radius(1.0f, 0.99f));
 	mInstanceData = gl::Vbo::create(GL_ARRAY_BUFFER, cPositions, GL_STATIC_DRAW);
 	mInstanceAttribs.append(geom::CUSTOM_0, 3, sizeof(ITorus), offsetof(ITorus, IPosition), 1);
 	mInstanceAttribs.append(geom::CUSTOM_1, 4, sizeof(ITorus), offsetof(ITorus, IColor), 1);
