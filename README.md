@@ -1,3 +1,5 @@
+__UPDATE:__ I'm deprecating this series of tutorials, when I started this I didn't really have a good direction, I just sorta threw a bunch of stuff together that seemed to sorta make sense, but I'm not so sure that was the best approach in retro (but then, when is it ever??). So I'm prepping a new series of tutorials that focuses less on trying to co-relate OpenGL to Cinder and just teach the Cinder OpenGL wrapper and some general Cinder stuff. May not be the best approach, but personally it's made for a better flowing, more cohesive set of tutorials. I'm going to polish up what's here so it works with Cinder's master branch (and therefore hopefully with 0.9.0), but I won't be adding anything to this. Hopefully this has helped or will help someone, Cheers!
+
 # CiOpenGl-Tutorial
 
 Gettings started with Cinder glNext(0.9.0?)'s new OpenGL API.
